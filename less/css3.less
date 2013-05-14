@@ -1,0 +1,66 @@
+@import url(base.less);
+@import url(custom-check.less);
+
+#fail {
+    color: @gray;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 15px;
+    display: none;
+}
+
+// CUSTOM CHECK
+// ==================================================
+input[type="checkbox"],
+input[type="radio"] {
+    // hide input
+    visibility: hidden;   
+    
+    // base
+    #customCheck > .base;
+
+    // defaults
+    &:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        visibility: visible;
+    }
+    &:checked:before {
+        #customCheck > .checked;
+    }
+    &:hover:before {
+        #customCheck > .hover;
+    }
+    &:active:before {
+        #customCheck > .active;
+    }
+    &:disabled {
+        &:before,
+        & + label {
+            #customCheck > .disabled;
+        }
+    }
+}
+
+// checkbox
+input[type="checkbox"] {    
+    &:before {
+        #customCheck > .checkbox;    
+    }
+    &:checked:before {
+        #customCheck > .checkbox > .checked;
+    }
+}
+
+// radio 
+input[type="radio"] {
+    &:before {
+        #customCheck > .radio;    
+    }
+    &:checked:before {
+        #customCheck > .radio > .checked;
+    }
+}

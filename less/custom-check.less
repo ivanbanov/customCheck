@@ -1,0 +1,61 @@
+// CUSTOM
+// ==================================================
+input { vertical-align: middle; }
+#customCheck {
+    // base custom
+    .base() {
+        cursor: pointer;
+        font: 1em/1.5em FontAwesome;
+        width: 1.5em;
+        height: 1.5em;
+        text-align: center;
+        vertical-align: middle;
+        margin-top: -1px;
+    }
+    
+    // default style of states
+    .default() {
+        border: 1px solid @darkGray;
+    }
+    .checked() {}
+    .hover() {
+        border: 1px solid @blue;
+        box-shadow: 0 0 3px @blue;
+        color: @blue;
+    }
+    .active() {
+        color: @darkBlue;
+        border-color: @darkBlue;
+        box-shadow: 0 0 3px @darkBlue;
+    }
+    .disabled() {
+        border-color: @gray;
+        box-shadow: none;
+        opacity: .5;
+    }
+
+    // checkbox
+    .checkbox() {
+        border-radius: 25%;
+        #gradient > .linear(#fff, @gray);
+        #customCheck > .default;
+
+        .checked() {
+            content: "\f00c";
+            #customCheck > .checked;
+        }
+    }
+
+    // radio
+    .radio() {
+        border-radius: 50%;
+        #gradient > .radial(#fff, @gray);
+        #customCheck > .default;
+        
+        .checked() {
+            content: "\f111";
+            font-size: .75em;
+            #customCheck > .checked;
+        }
+    }
+}

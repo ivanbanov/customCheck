@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="author" content="Ivan Banov" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Custom checkbox and radio button [CSS3]</title>
+
+    <link rel="stylesheet" href="css/css3.css" />
+</head>
+
+<body>
+    <p id="fail">
+        Sorry! Your browser dont support this customization!
+        <br />
+        You can try a cross-browser alternative <a href="http://github.com/ivanbanov/custom-check/">jquery.custom-check</a>
+        <br />
+        :)
+    </p>
+
+    <h1><strong>CSS3</strong> Custom checkbox and radio button</h1>
+
+    <form>
+        <fieldset>
+            <h2>Checkbox</h2>
+            <input id="checkbox-1" type="checkbox" name="checkbox" checked />
+            <label for="checkbox-1">Checkbox 1</label>
+            <br />
+            <input id="checkbox-2" type="checkbox" name="checkbox" />
+            <label for="checkbox-2">Checkbox 2</label>
+            <br />
+
+            <input id="checkbox-3" type="checkbox" name="checkbox" disabled />
+            <label for="checkbox-3">Checkbox 3</label>
+        </fieldset>
+            
+        <fieldset>
+            <h2>Radio Button</h2>
+            <input id="radio-1" type="radio" name="radio" checked />
+            <label for="radio-1">Radio 1</label>
+            <br />
+
+            <input id="radio-2" type="radio" name="radio" />
+            <label for="radio-2">Radio 2</label>
+            <br />
+
+            <input id="radio-3" type="radio" name="radio" disabled />
+            <label for="radio-3">Radio 3</label>
+        </fieldset>
+    </form>
+
+    <div id="footer">
+        <a href="http://github.com/ivanbanov/customCheck/" target="_blank">Github</a>
+        <a href="http://ivanbanov.github.com/customCheck/custom-jquery.html">v.jQuery</a>
+    </div>
+
+    <script>
+    (function() {
+        if (!/webkit/.test(navigator.userAgent.toLowerCase())) {
+            document.querySelector('#fail').style.display = 'block';
+        }
+    }());
+    </script>
+</body>
+</html>
