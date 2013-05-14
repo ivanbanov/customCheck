@@ -29,15 +29,13 @@ $('input:radio, input:checkbox').customCheck({
 
 ## Methods
 ### Check
-Check, uncheck or toggle check state of element.
+__check__, __uncheck__ or __toggleCheck__ check state of element.
 ```
 $(element).customCheck('check');
-$(element).customCheck('uncheck');
-$(element).customCheck('toggleCheck');
 ```
 
 ### Disabled
-Enable, disable or toggle enable state of element.
+__enable__, __disable__ or __toggle__ enable state of element.
 ```
 $(element).customCheck('enable');
 $(element).customCheck('disable');
