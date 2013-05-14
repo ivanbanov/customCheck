@@ -24,6 +24,9 @@
             // set class of type for parent of element
             $custom.addClass(type);
 
+            // set groupName
+            this._groupName = _plugin + '_group_' + this._prop('name');
+
             // set visual state and bind events
             this.update();
             this._bind();
@@ -38,11 +41,7 @@
         },
         toggleCheck: function() {
             // toggle checked state of el
-            if (this._isChecked()) {
-                this.uncheck();
-            } else {
-                this.check();
-            }
+            this._toggleProp('checked');
         },
         enable: function() {
             // enable el
@@ -54,11 +53,7 @@
         },
         toggleEnable: function() {
             // toggle disabled state of el
-            if (this._isDisabled()) {
-                this.enable();
-            } else {
-                this.disable();
-            }
+            this._toggleProp('disabled');
         },
         update: function() {
             var $parent = $(this.el).parent();
@@ -90,16 +85,16 @@
                 destroyRadios = false;
 
             // verify if need remove destroy custom events on no instantiated radios
-            $radioGroup.not($el).each(function() {
-                destroyRadios = $.data(this, _plugin) ? false : true;
-                return destroyRadios;
-            });
+            if (this._isRadio()) {
+                $radioGroup.not($el).each(function() {
+                    destroyRadios = $.data(this, _plugin) ? false : true;
+                    return destroyRadios;
+                });
+            }
 
             // destroy custom events on no instantiated radios
             if (destroyRadios) {
-                var dataGroup = _plugin + '_group_' + this._prop('name');
-
-                $.data(doc, dataGroup, false);
+                $.data(doc, this._groupName, false);
                 $radioGroup.off('.' + _plugin + 'Radio');
             }
 
@@ -111,12 +106,11 @@
                 el = t.el,
                 $el = $(el),
                 elName = t._prop('name'),
-                dataGroup = _plugin + '_group_' + elName,
                 doc_data = $._data(doc);
 
             // bind the radios that were not instantiated
-            if (t._isRadio() && !$.data(doc, dataGroup)) {
-                $.data(doc, dataGroup, true);
+            if (t._isRadio() && !$.data(doc, t._groupName)) {
+                $.data(doc, t._groupName, true);
 
                 t._getRadioGroup().on('change.' + _plugin + 'Radio', function() {
                     $('input[name="' + elName + '"]').not(':checked').parent('.custom-check').removeClass('checked');
