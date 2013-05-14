@@ -35,11 +35,9 @@ $(element).customCheck('check');
 ```
 
 ### Disabled
-__enable__, __disable__ or __toggle__ enable state of element.
+__enable__, __disable__ or __toggleEnable__ enable state of element.
 ```
 $(element).customCheck('enable');
-$(element).customCheck('disable');
-$(element).customCheck('toggleEnable');
 ```
 
 ### Update
