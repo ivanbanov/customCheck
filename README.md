@@ -1,5 +1,5 @@
 # customCheck
-Custom chekcbox and radio button (CSS3 / jQuery)
+Custom chekcbox and radio button (CSS3 / jQuery).
 
 ## Live Demo
 * <a href="http://ivanbanov.github.com/customCheck/custom-css3.html" target="_blank">pure CSS3</a>
@@ -47,7 +47,7 @@ $(element).customCheck('update');
 ```
 
 ### Destroy
-Remove styles and unbind events of element
+Remove styles and unbind events of element.
 ```
 $(element).customCheck('destroy');
 ```
