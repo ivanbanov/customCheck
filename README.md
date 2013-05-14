@@ -47,7 +47,7 @@ $(element).customCheck('update');
 ```
 
 ### Destroy
-Remove styles and bind events of element
+Remove styles and unbind events of element
 ```
 $(element).customCheck('destroy');
 ```
