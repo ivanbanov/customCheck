@@ -20,26 +20,6 @@ input[type="radio"] {
     // base
     #customCheck > .base;
 
-    // checkbox
-    &[type="checkbox"] {    
-        &:before {
-            #customCheck > .checkbox;    
-        }
-        &:checked:before {
-            #customCheck > .checkbox > .checked;
-        }
-    }
-
-    // radio 
-    &[type="radio"] {
-        &:before {
-            #customCheck > .radio;    
-        }
-        &:checked:before {
-            #customCheck > .radio > .checked;
-        }
-    }
-
     // defaults
     &:before {
         content: '';
@@ -62,5 +42,25 @@ input[type="radio"] {
         & + label {
             #customCheck > .disabled;
         }
+    }
+}
+
+// checkbox
+input[type="checkbox"] {    
+    &:before {
+        #customCheck > .checkbox;    
+    }
+    &:checked:before {
+        #customCheck > .checkbox > .checked;
+    }
+}
+
+// radio 
+input[type="radio"] {
+    &:before {
+        #customCheck > .radio;    
+    }
+    &:checked:before {
+        #customCheck > .radio > .checked;
     }
 }
