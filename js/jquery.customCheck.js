@@ -60,24 +60,20 @@
 
             // update checked visual state
             if (this._isChecked()) {
-
                 // if el is radio button, uncheck all other radios of same name that el
                 if (this._isRadio()) {
                     this._getRadioGroup().each(function() {
                         $(this).parent().removeClass('checked');
                     });
                 }
+
                 $parent.addClass('checked');
             } else {
                 $parent.removeClass('checked');
             }
 
             // update disabled visual state
-            if (this._isDisabled()) {
-                $parent.addClass('disabled');
-            } else {
-                $parent.removeClass('disabled');
-            }
+            this._isDisabled() ? $parent.addClass('disabled') : $parent.removeClass('disabled');
         },
         destroy: function() {
             var $el = $(this.el),
@@ -145,14 +141,14 @@
             $.map(customEvts, function(fn, evt) {
                 customEvts_namespace[evt + '.' + _plugin] = fn;
             });
-                        
+
             // attach events on element
             $el.on(customEvts_namespace);
 
             // set specific labels and events that need bind on plugin
             var $label = $('label[for=' + el.id + ']'),
                 labelEvts = ['mouseenter', 'mouseleave', 'mousedown', 'mouseup'];
-            
+
             // run events of inputs when a label, that "for" attribute reference a input instantiated, run the same event
             for (var e in labelEvts) {
                 // scope evt
@@ -173,47 +169,35 @@
         },
         _callback: function() {
             // run callbacks
-            if (this._isChecked()) {
-                this.opt.onCheck();
-            } else {
-                this.opt.onUncheck();
-            }
+            this._isChecked() ? this.opt.onCheck() : this.opt.onUncheck();
         },
         _toggleProp: function(prop, val) {
             var el = this.el,
 
-                    // toggle value of property if val is not defined
+                // toggle value of property if val is not defined
                 val = val === undefined
                     ? !this._prop(prop)
                     // set value to val if this is boolean
                     : typeof val == 'boolean'
                     ? val
                     : null;
-            
-            // prevent error if val dont is boolean
-            if (typeof val !== 'boolean') {
-                return;
-            }
 
-            // set property value
-            this._prop(prop, val);
-            this.update();
+            // prevent error if val dont is boolean
+            if (typeof val === 'boolean') {
+                // set property value
+                this._prop(prop, val);
+                this.update();
+            }
         },
         _prop: function(prop, val) {
             // set value of prop if val is boolean
-            if (typeof val == 'boolean') {
-                this.el[prop] = val;
-            } else {
-                // return state of specific prop
-                return this.el[prop];
-            }
+            // return state of specific prop
+            return typeof val == 'boolean' ? this.el[prop] = val : this.el[prop];
         },
         _evt: function(evt, val) {
             // verify val argument to set add/remove class
             // if the value is not boolean will be set true by default
-            val = typeof val == 'boolean' ? val : true;
-            
-            var fn = val ? 'addClass' : 'removeClass';
+            var fn = (typeof val == 'boolean' ? val : true) ? 'addClass' : 'removeClass';
 
             // toggle evt class
             $(this.el).parent()[fn](evt);
